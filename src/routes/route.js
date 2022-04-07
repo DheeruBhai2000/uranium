@@ -6,8 +6,10 @@ const formeetter=require('../validator/formetter.js')
 const _=require('lodash');
 const router = express.Router();
 
-router.get('/test-me', function (req, res) {
+router.post('/test-me', function (req, res) {
+    console.log(req.query.name)
     res.send('My first day on  api! its good');
+    router.get()
 });
 router.get('/welcome', function(req,res){
     logger.welcome();
