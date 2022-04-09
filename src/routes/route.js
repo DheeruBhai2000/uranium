@@ -1,5 +1,5 @@
 const express = require('express');
-
+const players=require('../players/player')
 const router = express.Router();
 
 router.get('/test-me', function (req, res) {
@@ -8,12 +8,13 @@ router.get('/test-me', function (req, res) {
 
     res.send( { msg: "My first ever API response in JSON !!"} )
 });
+router.post('/players',players.player)
 
 
 
 router.get('/test-api1', function (req, res) {
 
-    res.send( "hi FunctionUp " )
+    res.send( "hi FunctionUphjk " )
 });
 
 
