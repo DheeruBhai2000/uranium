@@ -24,14 +24,18 @@ let getParticularBooks= async function(req,res){
 };
 
 let getXINRBooks= async function(req,res){
-    let price1=await bookmodel.find({'price.indian':{$in:["100INR","200INR","500INR"]}})
-    res.send({msg:price1});
+    let meget =bookmodel.find({$or:[{'price.indian':{$in:["100INR","200INR"]}}]})
+    // let price1=await bookmodel.find({'price.indian':{$in:["100INR","200INR","500INR"]}})
+    res.send({msg:meget});
 };
 
 let getRandomBooks=async function(req,res){
-    let random= await bookmodel.find({$and:[{stockAvailable:true},{pages:{$gt:500}}]})
+    // let random= await bookmodel.find({$and:[{stockAvailable:true},{pages:{$gt:500}}]})//and quireis
+    let random= await bookmodel.find({$or:[{stockAvailable:true},{pages:{$gt:500}}]})// or queries
     res.send({msg:random})
 }
+
+
 
 module.exports.createBook=createBook
 module.exports.bookList=bookList
