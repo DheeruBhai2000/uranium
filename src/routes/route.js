@@ -1,18 +1,16 @@
 const express = require('express');
 const router = express.Router();
+const devbatchcontoller=require('../controllers/devbatchcontroller')
 
 // const UserController= require("../controllers/userController")
 // const BookController= require("../controllers/bookController")
-const newallcortroller=require("../controllers/newallcontroller")
+// const newallcortroller=require("../controllers/newallcontroller")
 
-//==============   apr 14 apis  =============================
-router.post("/createanewauther",newallcortroller.createNewAuther);
-router.post("/createnewpublisher",newallcortroller.createPublisher);
-router.post("/createnewbooks",newallcortroller.createNewBook);
-router.get("/allnewbooks",newallcortroller.allnewbooks)
-router.put("/getputchanges",newallcortroller.putchanges)
-router.put("/getputchangesprice",newallcortroller.putchangesprice)
-
+//==============   apr 18 apis  =============================
+router.post("/createdevelopers",devbatchcontoller.createdev);
+router.post("/createbatch",devbatchcontoller.createbatch);
+router.get("/geteligible",devbatchcontoller.scholar)
+router.get("/developers",devbatchcontoller.percentage)
 
 //========================     END      ======================
 
@@ -26,6 +24,8 @@ router.put("/getputchangesprice",newallcortroller.putchangesprice)
 
 // router.post("/updateBooks", BookController.updateBooks)
 // router.post("/deleteBooks", BookController.deleteBooks)
+
+
 
 //MOMENT JS
 // const moment = require('moment');
