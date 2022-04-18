@@ -43,9 +43,24 @@ let allnewbooks = async function (req, res) {
     res.send({ msg: allbooks })
 }
 
+let putchanges=async function(req,res){
+    let data=req.body
+    let changes=await newBookmodel.find({isisHardCover:false}).updateMany({data})
+    res.send({msg:changes})
+}
+
+let putchangesprice=async function(req,res){
+    let data=req.body
+    let price=await newBookmodel.find({rating:{$gt:3.5}}).updateMany({$set:data},{new:true})
+    res.send({msg:price})
+}
+
 
 module.exports.createNewAuther = createNewAuther;
 module.exports.createPublisher = createPublisher;
 module.exports.createNewBook = createNewBook;
 module.exports.allnewbooks = allnewbooks
+module.exports.putchanges=putchanges
+module.exports.putchangesprice=putchangesprice
+
 

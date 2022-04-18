@@ -10,6 +10,9 @@ router.post("/createanewauther",newallcortroller.createNewAuther);
 router.post("/createnewpublisher",newallcortroller.createPublisher);
 router.post("/createnewbooks",newallcortroller.createNewBook);
 router.get("/allnewbooks",newallcortroller.allnewbooks)
+router.put("/getputchanges",newallcortroller.putchanges)
+router.put("/getputchangesprice",newallcortroller.putchangesprice)
+
 
 //========================     END      ======================
 
