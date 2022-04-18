@@ -20,11 +20,12 @@ let scholar=async function(req,res){
 }
 
 let percentage=async function(req,res){
-    let data=req.query
-    let data1=req.query
+    let data=req.query.percentage
+    let data1=req.query.program
+    // let data1=req.query
     let batch1=await batchesmodel.find({batchName:data1}).select({_id:1})
     console.log(batch1)
-    let get=await developermodel.find({$or:[{batch:batch1},{percentage:{$gt:data}}]})
+    let get=await developermodel.find({batch:batch1,percentage:{$gt:data}})
     res.send({msg:get})
 }
 module.exports.createbatch=createbatch
