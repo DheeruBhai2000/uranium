@@ -45,14 +45,28 @@ let allnewbooks = async function (req, res) {
 
 let putchanges=async function(req,res){
     let data=req.body
-    let changes=await newBookmodel.find({isisHardCover:false}).updateMany({data})
-    res.send({msg:changes})
+    let changes=await newpublisher.find({publisherName:{$in :['Penguin','HarperCollins']}}).select({_id:1})
+    let changes1=[]
+    for (let i=0;i<changes.length;i++){
+        changes1.push(changes[i]._id)
+    }
+    console.log(changes1)
+    let update=await newBookmodel.updateMany({publisher:{$in:changes1}},{data})
+    res.send({msg:update})
 }
 
 let putchangesprice=async function(req,res){
     let data=req.body
-    let price=await newBookmodel.find({rating:{$gt:3.5}}).updateMany({$set:data},{new:true})
-    res.send({msg:price})
+    let price=await newAuther.find({rating:{$gt:3.5}}).select({_id:1})
+    console.log(price)
+
+    let update=[];
+    for(let i=0;i<price.length;i++){
+        update.push(price[i]._id)
+    }
+    // console.log(update)
+    let pricechange=await newBookmodel.updateMany({auther:{$in:update}},{data},{new:true})
+    res.send({msg:pricechange})
 }
 
 
