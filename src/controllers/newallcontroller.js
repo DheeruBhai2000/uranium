@@ -65,7 +65,7 @@ let putchangesprice=async function(req,res){
         update.push(price[i]._id)
     }
     // console.log(update)
-    let pricechange=await newBookmodel.updateMany({auther:{$in:update}},{data},{new:true})
+    let pricechange=await newBookmodel.updateMany({auther:{$in:update}},data,{new:true})
     res.send({msg:pricechange})
 }
 

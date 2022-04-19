@@ -2,20 +2,21 @@ const batchesmodel=require('../models/batches')
 const developermodel=require('../models/developers')
 
 let createdev=async function(req,res){
-    var data=req.body
+    let data=req.body
     let saved=await developermodel.create(data)
     res.send({msg:saved})
 }
 
 let createbatch= async function(req,res){
-    var data=req.body;
+    let data=req.body;
     let saved=await batchesmodel.create(data);
     res.send({msg:saved})
 }
 
 
 let scholar=async function(req,res){
-    let fetch=await developermodel.find({gender:"female",percentage:{$gte:70}})
+    let data = req.query.para
+    let fetch=await developermodel.find({gender:"female",percentage:{$gte:data}})
     res.send({msg:fetch})
 }
 
