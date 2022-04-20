@@ -12,6 +12,26 @@ router.post("/createbatch",devbatchcontoller.createbatch);
 router.get("/geteligible",devbatchcontoller.scholar)
 router.get("/developers",devbatchcontoller.percentage)
 
+let mid= function(req,res,next){
+    let log=false
+    if (log==false){ next()}
+    else{
+        res.send("not logged again please login in")
+    }
+
+}
+let mid1=async function(req,res){
+    console.log(req.ip,req.path,Date())
+    console.log(req.originalUrl)
+    res.sendStatus(200)
+}
+router.get("/random",mid,devbatchcontoller.random)
+
+router.get("/getaggregation",mid1,devbatchcontoller.aggregation)
+router.get("/getaggregation2",mid1,devbatchcontoller.aggregation)
+router.get("/getaggregation3",mid1,devbatchcontoller.aggregation)
+
+
 //========================     END      ======================
 
 // router.post("/createUser", UserController.createUser  )
