@@ -4,7 +4,7 @@ let orderSchema=new mongoose.Schema({
     userid:{type:ObjectId,ref:"newUser"},
     productid:{type:ObjectId,ref:"product"},
     amount:Number,
-    isFreeAppUser:Boolean,
+    // isFreeAppUser:Boolean,
     date:Date
 
 },{timestamps:true})

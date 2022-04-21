@@ -3,11 +3,12 @@ const router = express.Router();
 // const UserModel= require("../models/userModel.js")
 // const UserController= require("../controllers/userController")
 //const BookController= require("../controllers/bookController")
+const commonMW=require("../middlewares/commonMiddlewares")
 
 
-router.get("/test-me", function (req, res) {
-    res.send("My first ever api!")
-})
+// router.get("/test-me", function (req, res) {
+//     res.send("My first ever api!")
+// })
 
 // ========================apr 20 apis =================
 
@@ -16,24 +17,13 @@ router.get("/test-me", function (req, res) {
 const allcontroller=require("../controllers/allcontroller")
 
 
-router.post("/createuser",allcontroller.creteuser)
+router.post("/createuser",commonMW.commonMW,allcontroller.creteuser)
 router.post("/createproduct",allcontroller.createproduct)
+router.post("/createorder",commonMW.commonMW,allcontroller.createorder)
 
-let mid=async function(req,res,next){
-    let data=req.body.userid
-    let data1=req.body.productid
-    let head=req.headers.isfreeappuser
-    if (data&&data1){
-        if(head){
-                next()
-        }else{
-            res.send("error")
-        }
-    }else{
-        res.send("userid or product id not available")
-    }
 
-    router.post("/createorder",mid,allcontroller.createorder)
+    // router.post("/createorder",mid,allcontroller.createorder)
+    // router.post("/createorder",allcontroller.createorder)
 // ================================================
 // router.post("/createUser", UserController.createUser  )
 // router.get("/getUsersData", UserController.getUsersData)
@@ -69,7 +59,4 @@ let mid=async function(req,res,next){
 // router.get("/basicRoute3", commonMW.mid2, UserController.basicCode3)
 // router.get("/basicRoute4", commonMW.mid1, commonMW.mid4, UserController.basicCode4)
 
-
-
-}
 module.exports = router;
