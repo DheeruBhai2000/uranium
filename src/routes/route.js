@@ -3,7 +3,7 @@ const router = express.Router();
 // const userController= require("../controllers/newusercon")
 const userController=require("../controllers/userController")
 const newUsercontroller=require("../controllers/newusercontroller")
-
+const auth=require("../controllers/auth/auth")
 router.get("/test-me", function (req, res) {
     res.send("My first ever api!")
 })
@@ -11,9 +11,9 @@ router.get("/test-me", function (req, res) {
 // =======================apr 21 apis =================
 router.post("/register",newUsercontroller.register)
 router.post("/login",newUsercontroller.login)
-router.get("/users/:userId",newUsercontroller.getdata)
-router.put("/users/:userId",newUsercontroller.update)
-router.delete("/users/:userId",newUsercontroller.deleteser)
+router.get("/users/:userId",auth.auth,newUsercontroller.getdata)
+router.put("/users/:userId",auth.auth,newUsercontroller.update)
+router.delete("/users/:userId",auth.auth,newUsercontroller.deleteser)
 // ====================================================
 // router.post("/users", userController.createUser  )
 

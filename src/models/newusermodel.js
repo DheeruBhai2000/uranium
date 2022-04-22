@@ -3,7 +3,7 @@ const mongoose=require("mongoose")
 let newUserSchema=new mongoose.Schema({
     firstName:String,
     lastName:String,
-    mobile:String,
+    mobile:{type:String,required:true},
     emailId:String,
     password:String,
     gender:{type:String,enum:["male","female","other"]},
