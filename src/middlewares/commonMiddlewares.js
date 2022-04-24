@@ -1,4 +1,4 @@
-
+const jwt=require("jsonwebtoken")
 
 let commonMW=async function(req,res,next){
     let head=req.headers.isfreeappuser

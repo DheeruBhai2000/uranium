@@ -14,12 +14,12 @@ mongoose.connect("mongodb+srv://dheerubhai2000:gqG*2JVkTEt5T*G@cluster0.hk6qb.mo
 .then( () => console.log("MongoDb is connected"))
 .catch ( err => console.log(err) )
 
-// app.use(function(req, res, next) {
-//     console.log('This is a global middleware')
-//     //Adding a property in request object
-//     req['current-day'] = 'Wednesday'
-//     next()
-// })
+app.use(function(req, res, next) {
+    console.log('This is a global middleware')
+    //Adding a property in request object
+    req['current-day'] = 'Wednesday'
+    next()
+})
 
 app.use('/', route);
 
