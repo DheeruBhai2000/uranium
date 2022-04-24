@@ -5,7 +5,8 @@ const userSchema = new mongoose.Schema( {
     lastName: String,
     mobile: {
         type: String,
-
+        minlength:10,
+        maxlength:10,
         required: true
     },
     emailId: String,
@@ -18,4 +19,4 @@ const userSchema = new mongoose.Schema( {
     posts: {type: [], deafult: []}
 }, { timestamps: true });
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('newUser', userSchema)
