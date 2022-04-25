@@ -20,7 +20,7 @@ const allcontroller=require("../controllers/allcontroller")
 router.post("/createuser",commonMW.commonMW,allcontroller.creteuser)
 router.post("/createproduct",allcontroller.createproduct)
 router.post("/createorder",commonMW.commonMW,allcontroller.createorder)
-
+// router.get("/calculat",allcontroller.calculat)
 
     // router.post("/createorder",mid,allcontroller.createorder)
     // router.post("/createorder",allcontroller.createorder)
