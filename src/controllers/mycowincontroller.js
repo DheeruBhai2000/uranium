@@ -58,6 +58,7 @@ let wather = async function (req, res) {
             let result = await axios(options);
             // newcity.city=cities[i]
             obj.temp=result.data.main.temp
+            console.log(obj)
             newcity.push(obj)
             // newcity.push(newcity.city=cities[i],newcity.temp=result.data.main.temp)
         }
